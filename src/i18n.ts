@@ -32,7 +32,8 @@ const resources = {
       },
       experience: {
         tag: "/ EXPERIENCE",
-        title: "Combat Logs",
+        title: "PROFESSIONAL LOGS",
+        subtitle: "Career Timeline",
         roles: [
           {
             role: "Founder & CEO",
@@ -169,7 +170,8 @@ const resources = {
       },
       experience: {
         tag: "/ الخبرات",
-        title: "سجلات المعارك",
+        title: "السجلات المهنية",
+        subtitle: "المسار المهني",
         roles: [
           {
             role: "المدير التنفيذي والمؤسس",
