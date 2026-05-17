@@ -62,7 +62,7 @@ export default function Hero({ mouseX, mouseY }: { mouseX: number, mouseY: numbe
         <motion.div 
           initial={{ opacity: 0, x: -150 }} 
           animate={{ opacity: 1, x: 0 }} 
-          transition={{ duration: 1.5, delay: 2.0, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.5, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <span 
             className="font-display italic text-[14.25vw] md:text-[12.35vw] leading-none text-white block select-none"
@@ -82,7 +82,7 @@ export default function Hero({ mouseX, mouseY }: { mouseX: number, mouseY: numbe
         <motion.div 
           initial={{ opacity: 0, x: 150 }} 
           animate={{ opacity: 1, x: 0 }} 
-          transition={{ duration: 1.5, delay: 2.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.5, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
         >
           <span 
             className="font-display font-normal text-[13vw] md:text-[11vw] leading-none text-white block select-none"
@@ -98,7 +98,7 @@ export default function Hero({ mouseX, mouseY }: { mouseX: number, mouseY: numbe
         <motion.div 
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 1.5, delay: 2.4, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.5, delay: 1.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <span
             className="font-display italic text-[10.45vw] md:text-[8.55vw] leading-none block select-none opacity-40 md:opacity-100"
@@ -118,7 +118,7 @@ export default function Hero({ mouseX, mouseY }: { mouseX: number, mouseY: numbe
         className="absolute bottom-20 left-0 right-0 z-30 flex flex-col items-center gap-6"
         initial={{ opacity: 0, y: 30 }} 
         animate={{ opacity: 1, y: 0 }} 
-        transition={{ duration: 1.5, delay: 2.6, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1.5, delay: 1.9, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="w-24 h-[1px] bg-white/20"></div>
         <p className="text-editorial text-sm text-center">
@@ -140,7 +140,7 @@ export default function Hero({ mouseX, mouseY }: { mouseX: number, mouseY: numbe
         className="absolute bottom-6 z-30 flex flex-col items-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3.0, duration: 1 }}
+        transition={{ delay: 2.3, duration: 1 }}
       >
         <span className="font-sans text-[10px] text-white/30 uppercase tracking-widest" style={{ writingMode: 'vertical-rl' }}>
           {t("hero.scroll")}
