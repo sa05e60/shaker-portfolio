@@ -55,7 +55,7 @@ export default function Hero({ mouseX, mouseY }: { mouseX: number, mouseY: numbe
 
       {/* Line 1 — SHAKIR — top of viewport, left-anchored. Comes from left. */}
       <motion.div
-        className="absolute top-[18vh] left-0 w-full pl-[3vw] z-20 rtl:pr-[3vw] rtl:pl-0 rtl:text-right"
+        className="absolute top-[26vh] md:top-[18vh] left-0 w-full pl-[3vw] z-20 rtl:pr-[3vw] rtl:pl-0 rtl:text-right"
         animate={{ x: text1OffsetX }}
         transition={{ type: "spring", stiffness: 50, damping: 20 }}
       >
@@ -75,7 +75,7 @@ export default function Hero({ mouseX, mouseY }: { mouseX: number, mouseY: numbe
 
       {/* Line 2 — MAHMOOD — upper-mid, right-anchored. Comes from right. */}
       <motion.div
-        className="absolute top-[40vh] right-0 w-full pr-[2vw] text-right z-20 rtl:pl-[2vw] rtl:pr-0 rtl:text-left"
+        className="absolute top-[35vh] md:top-[40vh] right-0 w-full pr-[2vw] text-right z-20 rtl:pl-[2vw] rtl:pr-0 rtl:text-left"
         animate={{ x: text2OffsetX }}
         transition={{ type: "spring", stiffness: 50, damping: 20 }}
       >
@@ -129,9 +129,6 @@ export default function Hero({ mouseX, mouseY }: { mouseX: number, mouseY: numbe
         </p>
         
         <div className="flex gap-4 mt-4 rtl:flex-row-reverse">
-          <a href="#" className="border border-white/20 px-6 py-2 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors duration-500" data-testid="btn-download-cv">
-            {t("hero.download")}
-          </a>
           <a href="#projects" className="border border-white/20 px-6 py-2 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors duration-500" data-testid="btn-view-work">
             {t("hero.explore")}
           </a>
