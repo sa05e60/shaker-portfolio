@@ -23,25 +23,47 @@ export default function Hero({ mouseX, mouseY }: { mouseX: number, mouseY: numbe
     photoOffsetY.set(mouseDeltaY * 0.02);
   }, [mouseDeltaX, mouseDeltaY, photoOffsetX, photoOffsetY]);
 
-  const staggerVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }
-    })
-  };
-
   return (
     <section id="hero" className="relative min-h-screen w-full overflow-hidden">
 
-      {/* Line 1 — SHAKIR — top of viewport, left-anchored, above image */}
+      {/* Center Image — floats, tracks mouse, grayscale cinematic blend. Appears FIRST. */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center z-10"
+        initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
+        animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <motion.div
+          animate={{ y: [-10, 10, -10] }}
+          transition={{ repeat: Infinity, duration: 7, ease: 'easeInOut' }}
+        >
+          <motion.div style={{ x: photoOffsetX, y: photoOffsetY }}>
+            <img
+              src="/shakir-profile.png?v=3"
+              alt="Shakir Mahmood Shakir"
+              className="h-[85vh] object-contain pointer-events-none mt-[5vh]"
+              style={{
+                filter: 'grayscale(100%) contrast(115%) brightness(0.85)',
+                mixBlendMode: 'luminosity',
+                maskImage: 'linear-gradient(to bottom, black 45%, transparent 92%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 45%, transparent 92%)',
+              }}
+            />
+          </motion.div>
+        </motion.div>
+      </motion.div>
+
+      {/* Line 1 — SHAKIR — top of viewport, left-anchored. Comes from left. */}
       <motion.div
         className="absolute top-[18vh] left-0 w-full pl-[3vw] z-20 rtl:pr-[3vw] rtl:pl-0 rtl:text-right"
         animate={{ x: text1OffsetX }}
         transition={{ type: "spring", stiffness: 50, damping: 20 }}
       >
-        <motion.div custom={0} initial="hidden" animate="visible" variants={staggerVariants}>
+        <motion.div 
+          initial={{ opacity: 0, x: -150 }} 
+          animate={{ opacity: 1, x: 0 }} 
+          transition={{ duration: 1.5, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
           <span 
             className="font-display italic text-[14.25vw] md:text-[12.35vw] leading-none text-white block select-none"
             style={{ fontFamily: i18n.language === 'ar' ? "'Kufam', sans-serif" : undefined }}
@@ -51,13 +73,17 @@ export default function Hero({ mouseX, mouseY }: { mouseX: number, mouseY: numbe
         </motion.div>
       </motion.div>
 
-      {/* Line 2 — MAHMOOD — upper-mid, right-anchored, crosses over image */}
+      {/* Line 2 — MAHMOOD — upper-mid, right-anchored. Comes from right. */}
       <motion.div
         className="absolute top-[40vh] right-0 w-full pr-[2vw] text-right z-20 rtl:pl-[2vw] rtl:pr-0 rtl:text-left"
         animate={{ x: text2OffsetX }}
         transition={{ type: "spring", stiffness: 50, damping: 20 }}
       >
-        <motion.div custom={1} initial="hidden" animate="visible" variants={staggerVariants}>
+        <motion.div 
+          initial={{ opacity: 0, x: 150 }} 
+          animate={{ opacity: 1, x: 0 }} 
+          transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
           <span 
             className="font-display font-normal text-[13vw] md:text-[11vw] leading-none text-white block select-none"
             style={{ fontFamily: i18n.language === 'ar' ? "'Kufam', sans-serif" : undefined }}
@@ -67,30 +93,13 @@ export default function Hero({ mouseX, mouseY }: { mouseX: number, mouseY: numbe
         </motion.div>
       </motion.div>
 
-      {/* Center Image — floats, tracks mouse, grayscale cinematic blend */}
-      <motion.div
-        className="absolute inset-0 flex items-center justify-center z-10"
-        animate={{ y: [-10, 10, -10] }}
-        transition={{ repeat: Infinity, duration: 7, ease: 'easeInOut' }}
-      >
-        <motion.div style={{ x: photoOffsetX, y: photoOffsetY }}>
-          <img
-            src="/shakir-profile.png?v=3"
-            alt="Shakir Mahmood Shakir"
-            className="h-[85vh] object-contain pointer-events-none mt-[5vh]"
-            style={{
-              filter: 'grayscale(100%) contrast(115%) brightness(0.85)',
-              mixBlendMode: 'luminosity',
-              maskImage: 'linear-gradient(to bottom, black 45%, transparent 92%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, black 45%, transparent 92%)',
-            }}
-          />
-        </motion.div>
-      </motion.div>
-
-      {/* Line 3 — SHAKIR ghost outline — in FRONT of image (z-30), over faded torso */}
+      {/* Line 3 — SHAKIR ghost outline — in FRONT of image (z-30) */}
       <div className="absolute top-[62vh] w-full text-center z-30 pointer-events-none">
-        <motion.div custom={2} initial="hidden" animate="visible" variants={staggerVariants}>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 1.5, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+        >
           <span
             className="font-display italic text-[10.45vw] md:text-[8.55vw] leading-none block select-none opacity-40 md:opacity-100"
             style={{
@@ -107,7 +116,9 @@ export default function Hero({ mouseX, mouseY }: { mouseX: number, mouseY: numbe
       {/* Bottom Info */}
       <motion.div 
         className="absolute bottom-20 left-0 right-0 z-30 flex flex-col items-center gap-6"
-        custom={3} initial="hidden" animate="visible" variants={staggerVariants}
+        initial={{ opacity: 0, y: 30 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 1.5, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="w-24 h-[1px] bg-white/20"></div>
         <p className="text-editorial text-sm text-center">
@@ -132,7 +143,7 @@ export default function Hero({ mouseX, mouseY }: { mouseX: number, mouseY: numbe
         className="absolute bottom-6 z-30 flex flex-col items-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
+        transition={{ delay: 1.8, duration: 1 }}
       >
         <span className="font-sans text-[10px] text-white/30 uppercase tracking-widest" style={{ writingMode: 'vertical-rl' }}>
           {t("hero.scroll")}
